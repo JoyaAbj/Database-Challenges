@@ -98,13 +98,22 @@ CHALLENGE 5:
 
  CREATE TABLE author(
     -> id INT PRIMARY KEY,
-    -> author_name VARCHAR(50),
-    -> book_id INT);
+    -> author_name VARCHAR(50));
 
  CREATE TABLE publisher(
     -> book_id INT,
-    -> author_id INT,
     -> published_date DATE,
     -> id INT PRIMARY KEY);
     
 
+INSERT INTO books (id, book_name)
+    -> VALUES(1, 'Shatter ME'),
+    -> (2, 'Unravel Me');
+
+INSERT INTO author(id, author_name)
+    -> VALUES(1, 'TAHEREH MAFI'),
+    -> (2,'TAHEREH MAFI');
+
+INSERT INTO publisher( id, published_date,book_id)
+    -> VALUES(1,1/1/2000,1),
+    -> (2,2/2/2000,2);
