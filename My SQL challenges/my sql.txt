@@ -110,6 +110,7 @@ INSERT INTO books (id, book_name)
     -> VALUES(1, 'Shatter ME'),
     -> (2, 'Unravel Me');
 
+
 INSERT INTO author(id, author_name)
     -> VALUES(1, 'TAHEREH MAFI'),
     -> (2,'TAHEREH MAFI');
