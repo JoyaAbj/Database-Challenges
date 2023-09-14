@@ -1,0 +1,110 @@
+
+
+User@LAPTOP-20MT633I d:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE schoolDB;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> USE schoolDB;
+Database changed
+MariaDB [schoolDB]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+             
+| schooldb           
+
+CHALLENGE 2:
+ CREATE TABLE teachers (
+    ->      id INT,
+    ->      first_name VARCHAR(255),
+    ->      last_name VARCHAR(255),
+    ->      subject VARCHAR(255),
+    ->       PRIMARY KEY(id)
+    -> );
+
+     INSERT INTO teachers(id, first_name, last_name, subject)
+    -> VALUES (1, 'John', 'Doe', 'Math'),
+    ->        (2, 'Jane', 'Smith', 'Science');
+Query OK, 2 rows affected (0.044 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+CHALLENGE 3:
+
+MariaDB [schoolDB]> SELECT * FROM teachers;
++----+------------+-----------+---------+
+| id | first_name | last_name | subject |
++----+------------+-----------+---------+
+|  1 | John       | Doe       | Math    |
+|  2 | Jane       | Smith     | Science |
++----+------------+-----------+---------+
+2 rows in set (0.000 sec)
+
+ SELECT first_name,subject FROM teachers;
++------------+---------+
+| first_name | subject |
++------------+---------+
+| John       | Math    |
+| Jane       | Science |
++------------+---------+
+2 rows in set (0.000 sec)
+
+Chellenge 4:
+INNER JOIN:
+ SELECT students.first_name, teachers.first_name
+    -> FROM students
+    -> INNER JOIN teachers ON students.teacher_id = teachers.id;
++------------+------------+
+| first_name | first_name |
++------------+------------+
+| Alice      | John       |
+| Bob        | Jane       |
++------------+------------+
+
+LEFT JOIN:
+SELECT students.first_name, teachers.first_name
+    -> FROM students
+    -> LEFT JOIN teachers ON students.teacher_id = teachers.id;
++------------+------------+
+| first_name | first_name |
++------------+------------+
+| Alice      | John       |
+| Bob        | Jane       |
++------------+------------+
+
+RIGHT JOIN:
+ SELECT students.first_name, teachers.first_name
+    -> FROM students
+    -> RIGHT JOIN teachers ON students.teacher_id = teachers.id;
++------------+------------+
+| first_name | first_name |
++------------+------------+
+| Alice      | John       |
+| Bob        | Jane       |
++------------+------------+
+
+CHALLENGE 5:
+ CREATE TABLE books(
+    -> id INT PRIMARY KEY,
+    -> book_name VARCHAR(50));
+
+ CREATE TABLE author(
+    -> id INT PRIMARY KEY,
+    -> author_name VARCHAR(50),
+    -> book_id INT);
+
+ CREATE TABLE publisher(
+    -> book_id INT,
+    -> author_id INT,
+    -> published_date DATE,
+    -> id INT PRIMARY KEY);
+    
+
