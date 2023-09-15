@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config()
 
 const app = express();
 const PORT = 5000;
@@ -14,7 +15,7 @@ app.listen(PORT, () => {
 const { MongoClient } = require('mongodb');
 
 // Connection URI
-const uri = "mongodb+srv://joyaaboujaoude627:Be1ZUuuAm3yX7kVJ@cluster0.czrw6jq.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp";
+const uri = process.env.MONGO_URL;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
